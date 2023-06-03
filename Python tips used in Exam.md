@@ -162,7 +162,118 @@ a way to implement a queue data structure
 | 4 | Not commonly used, usually used for thread communication operations | Mostly used for data structure operations |
 
 
-<!-- ### heapq module 未完待续 -->
+### heapq module  
+Heap data structure is mainly used to represent a priority queue. In Python, it is available using the “heapq” module. The property of this data structure in Python is that each time the smallest heap element is popped (min-heap). Whenever elements are pushed or popped, heap structure is maintained. The heap[0] element also returns the smallest element each time. 
+
+- `heapify(iterable)` : This function is used to convert the iterable into a heap data structure. i.e. in heap order  
+```python
+# importing "heapq" to implement heap queue
+import heapq
+
+# initializing list
+li = [5, 7, 9, 1, 3]
+
+# using heapify to convert list into heap
+heapq.heapify(li)
+
+# printing created heap
+print ("The created heap is : ",(list(li)))
+```
+
+- `heappush(heap, ele)` : This function is used to insert the element mentioned in its arguments into a heap. **The order is adjusted**, so that heap structure is maintained.
+- `heappop(heap)` : This function is used to remove and return the smallest element from the heap. **The order is adjusted**, so that heap structure is maintained 
+```python
+# importing "heapq" to implement heap queue
+import heapq
+
+# initializing list
+li = [5, 7, 9, 1, 3]
+
+# using heapify to convert list into heap
+heapq.heapify(li)
+
+# printing created heap
+print("The created heap is : ", end="")
+print(list(li))
+
+# using heappush() to push elements into heap
+# pushes 4
+heapq.heappush(li, 4)
+
+# printing modified heap
+print("The modified heap after push is : ", end="")
+print(list(li))
+
+# using heappop() to pop smallest element
+print("The popped and smallest element is : ", end="")
+print(heapq.heappop(li))
+```
+
+- `heapify(iterable)` : This function is used to convert the iterable into a heap data structure. i.e. in heap order 
+
+```python
+nums = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5]
+
+# create a heap from the list
+heapq.heapify(nums)  
+
+# create a list of tuples
+tuples = [(1, 'one'), (2, 'two'), (3, 'three')]
+
+# create a heap from the list of tuples
+heapq.heapify(tuples)
+```  
+
+- `heappushpop()`: Push an element onto a heap and then pop the smallest element from the heap  
+- `heapreplace()`: Pop the smallest element from a heap and push a new element onto the heap 
+```python 
+import heapq
+
+# create a heap
+heap = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5]
+
+# use heappushpop() to push an element onto the heap and pop the smallest element
+smallest = heapq.heappushpop(heap, 0)
+
+# print the smallest element
+print(smallest)
+
+# use heapreplace() to pop the smallest element from the heap and push a new element
+smallest = heapq.heapreplace(heap, 2)
+
+# print the smallest element again
+print(smallest)
+``` 
+
+- `nlargest(k, iterable, key = fun)`: This function is used to return the k largest elements from the iterable specified and satisfy the key if mentioned.
+- `nsmallest(k, iterable, key = fun)`: This function is used to return the k smallest elements from the iterable specified and satisfy the key if mentioned 
+```python 
+# Python code to demonstrate working of
+# nlargest() and nsmallest()
+
+# importing "heapq" to implement heap queue
+import heapq
+
+# initializing list
+li1 = [6, 7, 9, 4, 3, 5, 8, 10, 1]
+
+# using heapify() to convert list into heap
+heapq.heapify(li1)
+
+# using nlargest to print 3 largest numbers
+# prints 10, 9 and 8
+print("The 3 largest numbers in list are : ", end="")
+print(heapq.nlargest(3, li1))
+
+# using nsmallest to print 3 smallest numbers
+# prints 1, 3 and 4
+print("The 3 smallest numbers in list are : ", end="")
+print(heapq.nsmallest(3, li1))
+
+```
+
+
+
     
 
 
