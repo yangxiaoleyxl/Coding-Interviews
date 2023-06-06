@@ -151,6 +151,31 @@ a way to implement a queue data structure
         - `qsize()` 
         - `full()` 
         - `empty()`  
+- PriorityQueue()  
+    - The queue.PriorityQueue module in Python is a built-in module that provides an implementation of a priority queue. A priority queue is a data structure that allows you to insert elements with a priority and retrieve them in order of priority.
+
+    - In a PriorityQueue, elements are stored in a heap, which is a specialized tree-based data structure that satisfies the heap property. The heap property states that for every node i in the heap, the value of the parent node is less than or equal to the value of node i. This ensures that the smallest element is always at the root of the heap
+
+        - `qsize()`: Returns the number of elements in the queue.
+        - `empty()`: Returns True if the queue is empty, False otherwise.
+        - `full()`: Returns True if the queue is full, False otherwise.
+        - `put(item, priority)`: Adds an item to the queue with a specified priority.
+        - `get()`: Removes and returns the item with the lowest priority from the queue 
+```python 
+import queue
+
+# create a priority queue
+q = queue.PriorityQueue()
+
+# add elements to the queue with a priority
+q.put((1, 'apple'))
+q.put((3, 'banana'))
+q.put((2, 'orange'))
+
+# retrieve elements from the queue in order of priority
+while not q.empty():
+    print(q.get()[1])
+```
 
 ### Difference between LIFOQueue and Deque
 
