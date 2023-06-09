@@ -133,6 +133,45 @@ Deque.popleft()
 # Printing modified deque
 print("Queue:", Deque)
 ```
+- defaultdict 
+    - The functionality of both dictionaries and defaultdict are almost same except for the fact that defaultdict never raises a KeyError. **It provides a default value for the key that does not exists**   
+```python 
+# Counting occurances of elements in a list
+from collections import defaultdict
+
+my_list = ['apple', 'banana', 'apple', 'orange', 'banana', 'apple']
+my_dict = defaultdict(int)
+for fruit in my_list:
+    my_dict[fruit] += 1
+print(my_dict)
+# Output: defaultdict(<class 'int'>, {'apple': 3, 'banana': 2, 'orange': 1}) 
+
+# Grouping elements in a list by a certain criterion 
+from collections import defaultdict
+
+my_list = ['apple', 'banana', 'avocado', 'orange', 'peach']
+my_dict = defaultdict(list)
+for fruit in my_list:
+    my_dict[len(fruit)].append(fruit)
+print(my_dict)
+# Output: defaultdict(<class 'list'>, {5: ['apple', 'peach'], 6: ['banana'], 7: ['avocado', 'orange']}) 
+
+# Creating a nested dicionary 
+from collections import defaultdict
+
+my_dict = defaultdict(lambda: defaultdict(int))
+my_dict['Alice']['apples'] = 3
+my_dict['Alice']['oranges'] = 2
+my_dict['Bob']['bananas'] = 1
+print(my_dict)
+# Output: defaultdict(<function <lambda> at 0x7f8c5c1d7d08>, {'Alice': defaultdict(<class 'int'>, {'apples': 3, 'oranges': 2}), 'Bob': defaultdict(<class 'int'>, {'bananas': 1})})
+``` 
+
+
+
+
+
+
 
 ### queue 
 a way to implement a queue data structure 
@@ -202,7 +241,7 @@ li = [5, 7, 9, 1, 3]
 heapq.heapify(li)
 
 # printing created heap
-print ("The created heap is : ",(list(li)))
+print ("The created heap is : ", (list(li)))
 ```
 
 - `heappush(heap, ele)` : This function is used to insert the element mentioned in its arguments into a heap. **The order is adjusted**, so that heap structure is maintained.
