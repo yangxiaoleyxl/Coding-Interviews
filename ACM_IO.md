@@ -48,5 +48,40 @@ for i in range(num):
     print(sum(list(map(int, a[1::]))))
 ```   
 
+- [ Sort String (1) ]( https://ac.nowcoder.com/acm/contest/5657/E )  
+```python 
+import sys 
+for line in sys.stdin: 
+    a = line.split()  
+    if a:
+        a.sort() 
+        print(' '.join(a)) 
+    else:
+        break
+```   
+
+- [ Sort String (2) ]( https://ac.nowcoder.com/acm/contest/5657/E )  
+```python 
+import sys 
+for line in sys.stdin: 
+    a = line.split()  
+    if a:
+        a.sort() 
+        print(' '.join(a)) 
+    else:
+        break
+```    
+
+- [ Sort String (3) ]( https://ac.nowcoder.com/acm/contest/5657/J )  
+```python 
+import sys 
+
+for line in sys.stdin:
+    a = line.strip().split(',')  # 可去除\n
+    a.sort() 
+    print( ','.join(a) )
+``` 
+
+
 
 
