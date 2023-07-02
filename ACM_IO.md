@@ -42,11 +42,36 @@ while True:
 
 - [ A+B(5) ]( https://ac.nowcoder.com/acm/contest/5657/E )  
 ```python 
-num = int(input()) 
+num = int(input())  #  已知输入有几行
+for i in range(num):
+    a = input().split() 
+    print(sum(list(map(int, a[1::]))))
+```    
+
+- [ A+B(5) ]( https://ac.nowcoder.com/acm/contest/5657/E )  
+```python 
+num = int(input())  #  已知输入有几行
 for i in range(num):
     a = input().split() 
     print(sum(list(map(int, a[1::]))))
 ```   
+
+- [ A+B(6) ]( https://ac.nowcoder.com/acm/contest/5657/F )  
+```python 
+import sys 
+
+for line in sys.stdin:
+    s = line.split()  
+    print(sum(list(map(int, s[1::]))))
+```   
+
+- [ A+B(7) ]( https://ac.nowcoder.com/acm/contest/5657/G )  
+```python 
+import sys 
+for line in sys.stdin: 
+    num = list(map(int, line.strip().split() ))  
+    print(sum(num))
+``` 
 
 - [ Sort String (1) ]( https://ac.nowcoder.com/acm/contest/5657/E )  
 ```python 
