@@ -48,14 +48,6 @@ for i in range(num):
     print(sum(list(map(int, a[1::]))))
 ```    
 
-- [ A+B(5) ]( https://ac.nowcoder.com/acm/contest/5657/E )  
-```python 
-num = int(input())  #  已知输入有几行
-for i in range(num):
-    a = input().split() 
-    print(sum(list(map(int, a[1::]))))
-```   
-
 - [ A+B(6) ]( https://ac.nowcoder.com/acm/contest/5657/F )  
 ```python 
 import sys 
@@ -71,7 +63,18 @@ import sys
 for line in sys.stdin: 
     num = list(map(int, line.strip().split() ))  
     print(sum(num))
+```  
+
+小结：
+```python 
+import sys 
+for line in sys.stdin:
+    s = line.strip().split()  # 用于读取每行输入元素 
+
+######################
+list(map(int, x))  #  将读取的一行字符串转为int的技巧 
 ``` 
+
 
 - [ Sort String (1) ]( https://ac.nowcoder.com/acm/contest/5657/E )  
 ```python 
