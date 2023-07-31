@@ -75,7 +75,6 @@ for line in sys.stdin:
 list(map(int, x))  #  将读取的一行字符串转为int的技巧 
 ``` 
 
-
 - [ Sort String (1) ]( https://ac.nowcoder.com/acm/contest/5657/E )  
 ```python 
 import sys 
@@ -108,8 +107,40 @@ for line in sys.stdin:
     a = line.strip().split(',')  # 可去除\n
     a.sort() 
     print( ','.join(a) )
+```  
+
+- [ 平均绩点 ]( https://kamacoder.com/problem.php?id=1006 )   
+
+```python 
+while 1:
+    try: 
+        n = input().replace(" ", "").replace("A", "4").replace("B", "3").replace("C", "2").replace("D", "1").replace("F", "0") 
+        s = 0 
+        for i in n:
+            if i not in "43210":
+                print("Unknown") 
+                break 
+            s += int(i) 
+        else:
+            print(f"{s / len(n): .2f}")   
+    except: 
+        break
+```   
+
+- [ 摆平积木 ]( https://kamacoder.com/problem.php?id=1007 ) 
+
+```python 
+while 1:
+    try:
+        n = int( input() ) 
+        ls = list( map(int, input().split() ) ) 
+        ls.sort() 
+        m = sum(ls) // n 
+        moves = 0 
+        for i in ls:
+            moves += abs(i-m) 
+        print(moves // 2) 
+        print() 
+    except: 
+        break 
 ``` 
-
-
-
-
