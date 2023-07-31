@@ -143,4 +143,21 @@ while 1:
         print() 
     except: 
         break 
+```  
+
+- [ 奇怪的信 ]( https://kamacoder.com/problem.php?id=1008 ) 
+```python 
+while 1:
+    try:
+        n = int(input())
+        res = 0  
+        while n: 
+            each = n % 10   
+            if each % 2 == 0:
+                res += each 
+            n = n // 10 
+        print(res) 
+        print()
+    except: 
+        break
 ``` 
