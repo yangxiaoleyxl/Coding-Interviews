@@ -175,16 +175,20 @@ while True:
     print(res)  
 ```   
 
-- [ 句子缩写 ]( https://kamacoder.com/problem.php?id=1009 ) 
+- [ 句子缩写 ]( https://kamacoder.com/problem.php?id=1013 ) 
 ```python 
-while True:
-    M, K = map(int, input().split()) 
-    if M == 0 or K == 0:
-        break 
-    res = M 
-    while M >= K:
-        res += M // K 
-        M = M // K + M % K  # 更新奖励，新奖励 = 商 + 余数 
-    print(res)  
+while True: 
+    # 1. 养成 try except 习惯
+    # 2. 善用 list(map( ))，这种总用于 整个 list 元素的高效结构
+    # 3. 字符串的常用方法： .lower(), .upper(), ''.join() 
+    try: 
+        n = int(input())   
+        for _ in range(n):
+            strs = input().split()  
+            first = list(map(lambda x: (x[0]).upper(), strs) )   
+            res = ''.join(first)
+            print(res) 
+    except:
+        break
 ```  
 
