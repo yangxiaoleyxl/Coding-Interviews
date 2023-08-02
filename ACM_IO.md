@@ -160,4 +160,31 @@ while 1:
         print()
     except: 
         break
-``` 
+```  
+
+- [ 运营商活动 ]( https://kamacoder.com/problem.php?id=1009 ) 
+```python 
+while True:
+    M, K = map(int, input().split()) 
+    if M == 0 or K == 0:
+        break 
+    res = M 
+    while M >= K:
+        res += M // K 
+        M = M // K + M % K  # 更新奖励，新奖励 = 商 + 余数 
+    print(res)  
+```   
+
+- [ 句子缩写 ]( https://kamacoder.com/problem.php?id=1009 ) 
+```python 
+while True:
+    M, K = map(int, input().split()) 
+    if M == 0 or K == 0:
+        break 
+    res = M 
+    while M >= K:
+        res += M // K 
+        M = M // K + M % K  # 更新奖励，新奖励 = 商 + 余数 
+    print(res)  
+```  
+
