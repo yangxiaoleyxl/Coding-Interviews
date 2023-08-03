@@ -204,6 +204,13 @@ for _ in range(n):
     print(result)
 ```
 
-
-
-
+- [ 位置互换 ]( https://kamacoder.com/problem.php?id=1015 ) 
+```python 
+C = int(input())
+for _ in range(C):
+    s = input()
+    even_chars = s[1::2]
+    odd_chars = s[::2]
+    result = ''.join(e + o for e, o in zip(even_chars, odd_chars))
+    print(result)
+``` 
