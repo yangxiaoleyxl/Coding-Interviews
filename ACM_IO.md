@@ -190,5 +190,20 @@ while True:
             print(res) 
     except:
         break
-```  
+```   
+
+
+- [ 神秘字符 ]( https://kamacoder.com/problem.php?id=1014 ) 
+```python 
+n = int(input())
+for _ in range(n):
+    line1 = input()
+    line2 = input()
+    mid = len(line1) // 2
+    result = line1[:mid] + line2 + line1[mid:]
+    print(result)
+```
+
+
+
 
