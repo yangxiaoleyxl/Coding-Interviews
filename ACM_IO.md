@@ -213,4 +213,46 @@ for _ in range(C):
     odd_chars = s[::2]
     result = ''.join(e + o for e, o in zip(even_chars, odd_chars))
     print(result)
+```  
+
+- [ 出栈的合法性 ]( https://kamacoder.com/problem.php?id=1016 ) 
+```python 
+while True:
+    n = int(input())
+    if n == 0:
+        break
+    sequence = list(map(int, input().split()))
+    stack = []
+    current = 1
+    possible = True
+    for num in sequence:
+        while current <= num:
+            stack.append(current)
+            current += 1
+        if stack[-1] == num:
+            stack.pop()
+        else:
+            possible = False
+            break
+    if possible:
+        print('Yes')
+    else:
+        print('No') 
+```   
+思路：用一个辅助栈，将**入栈序列以某种顺序入栈，看是否可以产生出栈序列**即可 
+步骤：
+- 若辅助栈为空，且入栈序列不为空，则入栈序列下一个元素入辅助栈
+- 若 <font color="red"> 当前辅助栈的栈顶元素不等于出栈序列的首元素 </font>，那么入栈序列一直入栈，直到入栈序列为空 
+- 若 当前辅助栈的栈顶元素 等于 出栈序列首元素，那么 <font color="red"> 栈顶元素弹出，出栈序列第一个元素移走 </font> 
+- 
+
+- [ 位置互换 ]( https://kamacoder.com/problem.php?id=1015 ) 
+```python 
+C = int(input())
+for _ in range(C):
+    s = input()
+    even_chars = s[1::2]
+    odd_chars = s[::2]
+    result = ''.join(e + o for e, o in zip(even_chars, odd_chars))
+    print(result)
 ``` 
