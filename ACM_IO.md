@@ -244,15 +244,39 @@ while True:
 - 若辅助栈为空，且入栈序列不为空，则入栈序列下一个元素入辅助栈
 - 若 <font color="red"> 当前辅助栈的栈顶元素不等于出栈序列的首元素 </font>，那么入栈序列一直入栈，直到入栈序列为空 
 - 若 当前辅助栈的栈顶元素 等于 出栈序列首元素，那么 <font color="red"> 栈顶元素弹出，出栈序列第一个元素移走 </font> 
-- 
+- 若入栈序列为空，出栈序列首元素 != 栈顶元素，则出栈序列不合法
 
-- [ 位置互换 ]( https://kamacoder.com/problem.php?id=1015 ) 
-```python 
-C = int(input())
-for _ in range(C):
-    s = input()
-    even_chars = s[1::2]
-    odd_chars = s[::2]
-    result = ''.join(e + o for e, o in zip(even_chars, odd_chars))
-    print(result)
-``` 
+- [ 单链表反转 ]( https://kamacoder.com/problem.php?id=1018 ) 
+```python  
+class LinkedNode:
+    def __init__(self, val=0, next=None):
+        self.val = val 
+        self.next = next  
+        
+def reverseList(head: LinkedNode) -> LinkedNode:
+    temp = None # 保存cur的下一个节点
+    cur = head
+    pre = None
+    while cur:
+        temp = cur.next
+        cur.next = pre # 翻转操作
+        pre = cur # 更新pre 和 cur指针
+        cur = temp
+    return pre 
+    
+def printLinkedList(head): 
+    cur = head 
+    while cur:  
+        print(cur.val, end=' ') 
+        cur = cur.next 
+    print()
+    
+while True:
+    try:
+        n, *nums = map(int, input().split())
+    except:
+        break
+```  
+
+
+ 
