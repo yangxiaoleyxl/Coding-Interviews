@@ -276,7 +276,48 @@ while True:
         n, *nums = map(int, input().split())
     except:
         break
-```  
+```   
+
+- [ 前序和中序构造后序二叉树 ]( https://kamacoder.com/problem.php?id=1020 ) 
+```python 
+class Node:
+    def __init__(self, val=None, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+def build_tree(preorder, inorder):
+    if not preorder or not inorder:
+        return None
+    root_val = preorder[0]
+    root_index = inorder.index(root_val)
+    left_inorder = inorder[:root_index]
+    right_inorder = inorder[root_index+1:]
+    left_preorder = preorder[1:len(left_inorder)+1]
+    right_preorder = preorder[len(left_inorder)+1:]
+    root = Node(root_val)
+    root.left = build_tree(left_preorder, left_inorder)
+    root.right = build_tree(right_preorder, right_inorder)
+    return root
+
+def postorder_traversal(root):
+    if not root:
+        return []
+    left = postorder_traversal(root.left)
+    right = postorder_traversal(root.right)
+    return left + right + [root.val]
+
+while True:
+    try:
+        preorder, inorder = map(str, input().split())
+        if not preorder or not inorder:
+            break
+        root = build_tree(preorder, inorder)
+        postorder = postorder_traversal(root)
+        print(''.join(postorder))
+    except EOFError:
+        break 
+```
 
 
  
