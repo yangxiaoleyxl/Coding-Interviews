@@ -317,7 +317,73 @@ while True:
         print(''.join(postorder))
     except EOFError:
         break 
+``` 
+
+- [ 二叉树的遍历 ]( https://kamacoder.com/problem.php?id=1021 ) 
+```python 
+class Node:
+    def __init__(self, val): 
+        self.val = val  
+        self.left = None 
+        self.right = None 
+    
+def preorder(root): 
+    if not root: return []   
+    left = preorder(root.left)
+    right = preorder(root.right) 
+    return [root.val] + left + right
+    
+def inorder(root):   
+    if not root : return [] 
+    left = inorder(root.left) 
+    right = inorder(root.right)   
+    return left + [root.val] + right
+
+def postorder(root): 
+    if not root : return [] 
+    left = postorder(root.left) 
+    right = postorder(root.right) 
+    return left + right + [root.val] 
+        
+n = int(input())
+nodes = [None] * (n + 1)
+line_in = []
+for i in range(n):
+    line = input().split()
+    val, left, right = line[0], int(line[1]), int(line[2])
+    if not nodes[i+1]:
+        node = Node(val)
+        nodes[i + 1] = node
+    else:
+        # 更新val
+        nodes[i + 1].val = val
+    if left != 0:
+        # 创建一个node,放入nodes列表
+        node_left = Node('x')
+        nodes[left] = node_left
+        nodes[i + 1].left = node_left
+    if right != 0:
+        node_right = Node('x')
+        nodes[right] = node_right
+        nodes[i + 1].right = node_right
+
+root = nodes[1]
+pre = preorder(root)
+ino = inorder(root)
+post = postorder(root)
+print(''.join(pre))
+print(''.join(ino))
+print(''.join(post))
 ```
 
 
- 
+
+
+
+
+
+
+        
+        
+        
+        
