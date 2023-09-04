@@ -40,5 +40,34 @@ print(test.method(myClass))
 print(test.classmethod())   
 print(test.staticmethod())   
 ``` 
-这是用于区分三种方法的例子.可以看到**实例方法可以访问类和实例**. **类方法可以访问类,但不能访问实例**, **静态方法既不能访问对象实例状态也不能访问类状态** 
+这是用于区分三种方法的例子.可以看到**实例方法可以访问类和实例**. **类方法可以访问类,但不能访问实例**, **静态方法既不能访问对象实例状态也不能访问类状态**  
+
+### sort() 和 sorted()  
+- sort() 是list的方法,只能由 list 调用, **不反悔任何值且改变原始list**
+- sorted() 是一个可对 sequence, list, set 和 dict 按升序或降序方法排序的方法,返回一个list 
+```python 
+# Python program to demonstrate
+# sorted()
+
+
+# List
+x = ['q', 'w', 'r', 'e', 't', 'y']
+print(sorted(x))
+
+# Tuple
+x = ('q', 'w', 'e', 'r', 't', 'y')
+print(sorted(x))
+
+# String-sorted based on ASCII translations
+x = "python"
+print(sorted(x))
+
+# Dictionary
+x = {'q': 1, 'w': 2, 'e': 3, 'r': 4, 't': 5, 'y': 6}
+print(sorted(x))
+
+# Set
+x = {'q', 'w', 'e', 'r', 't', 'y'}
+print(sorted(x))
+```
 
