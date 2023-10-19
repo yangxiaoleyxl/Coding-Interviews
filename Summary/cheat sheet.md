@@ -180,7 +180,7 @@
 
 ## 为什么要添加位置编码 
 - 因为句子中词语出现的位置不同, 含义也不同, 而 self-attention无法获取位置信息, 需要位置编码信息来确定一个单词的位置 
-- 
+
 
 ## Transformer 的优势, 相比于RNN 解决了什么问题  
 
@@ -214,41 +214,41 @@
         - FPR (FP / FP + TN)   
         - 如果ROC面积越大，说明曲线越往左上角靠过去。那么对于任意截断点，(FPR，TPR)坐标点越往左上角（0,1）靠，说明FPR较小趋于0（根据定义得知，就是在所有真实负样本中，基本没有预测为正的样本），TRP较大趋于1（根据定义得知，也就是在所有真实正样本中，基本全都是预测为正的样本）。并且上述是对于任意截断点来说的，很明显，那就是分类器对正样本的打分基本要大于负样本的打分（一般预测值也叫打分），衡量的就是**排序能力** 
         - 由于AUC衡量的是一种排序能力
-            - 对预测概率从高到低排序
+            - 设有 M 个正样本, N 个负样本. 对预测概率从高到低排序
             - 每个概率值设一个rank 
-            - 对所有样本的预测值排序, 编号为 rk_i, 该排序代表了该概率超过的样本数量 
+            - 对所有样本的预测值排序, 编号为 rk_i, 该排序代表了该概率超过的样本数量
+            - 对于概率最大的正样本, 比它小的负样本个数为 **rk_1 - M**  
+            - 对于概率次大的正样本, 比它小的负样本个数为 **rk_2 - (M-1)**, 以此类推
             - $ (\sum( rk_{i} - M(M+1)/2)) / (M * N) $  
+
+        - 优缺点
+            - 
     
 ```python 
-def AUC(label, pre):
-　　"""
-　　适用于ｐｙｔｈｏｎ3.0以上版本
-   """
-　　#计算正样本和负样本的索引，以便索引出之后的概率值
-    pos = [i for i in range(len(label)) if label[i] == 1]
-    neg = [i for i in range(len(label)) if label[i] == 0]
- 
+def calAUC(prob, labels):
+    f = list(zip(prob, labels))
+    rank = [values2 for values1, values2 in sorted(f, key=lambda x: x[0])]
+    rankList = [i + 1 for i in range(len(rank)) if rank[i] == 1]
+    posNum = 0
+    negNum = 0
+    for i in range(len(labels)):
+        if (labels[i] == 1):
+            posNum += 1
+        else:
+            negNum += 1
     auc = 0
-    for i in pos:
-        for j in neg:
-            if pre[i] > pre[j]:
-                auc += 1
-            elif pre[i] == pre[j]:
-                auc += 0.5
- 
-    return auc / (len(pos)*len(neg))
- 
-if __name__ == '__main__':
-    label = [1,0,0,0,1,0,1,0]
-    pre = [0.9, 0.8, 0.3, 0.1, 0.4, 0.9, 0.66, 0.7]
-    print(AUC(label, pre))
- 
-    from sklearn.metrics import roc_curve, auc
-    fpr, tpr, th = roc_curve(label, pre , pos_label=1)
-    print('sklearn', auc(fpr, tpr))
-``` 
+    auc = (sum(rankList) - (posNum * (posNum + 1)) / 2) / (posNum * negNum)
+    print(auc)
+    return auc 
 
-  
+if __name__ == "__main__":
+    labels = np.array([1, 0, 0, 0, 1, 0, 1, 0, ])
+    prob = np.array([0.9, 0.8, 0.3, 0.1, 0.4, 0.9, 0.66, 0.7])
+
+    fpr, tpr, thresholds = roc_curve(labels, prob, pos_label=1)
+    print("-----sklearn:", auc(fpr, tpr))
+    print("-----py脚本:", calAUC(prob, labels))
+```  
 
 - 回归指标 
     - MAE
@@ -266,7 +266,6 @@ if __name__ == '__main__':
         - 基准模型: y标均值与y标的误差平方和
         - 1 - (MSE(当前模型)) / (MSE(基准模型)) 
     - 
-
  
 ## 风控指标相关 
 - 技术指标  
